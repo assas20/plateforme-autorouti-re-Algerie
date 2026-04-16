@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منصة وزارة الأشغال العمومية والمنشآت القاعدية</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+        :root {
+            --primary-color: #1a5276;
+            --secondary-color: #f0f3f5;
+            --accent-color: #d4ac0d;
+            --white: #ffffff;
+            --card-shadow: 0 15px 35px rgba(0,0,0,0.1);
+        }
+
+        * { box-sizing: border-box; font-family: 'Tajawal', sans-serif; transition: all 0.3s ease; }
+
+        body { margin: 0; background-color: var(--secondary-color); overflow-x: hidden; }
+
+        /* --- Header --- */
+        .main-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 20px 60px; background: var(--white);
+            box-shadow: 0 4px 25px rgba(0,0,0,0.08); border-bottom: 5px solid var(--accent-color);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .logo-side img { height: 90px; }
+        .header-text h1 { margin: 0; font-size: 24px; color: var(--primary-color); }
+
+        /* --- Main Content --- */
+        .content-area { padding: 40px 20px; max-width: 1500px; margin: auto; }
+        .section-title { text-align: center; font-size: 28px; color: var(--primary-color); margin-bottom: 40px; }
+        .section-title::after { content: ''; width: 60px; height: 4px; background: var(--accent-color); display: block; margin: 10px auto; }
+
+        /* --- Cards Grid --- */
+        .cards-wrapper {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px; margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--white); border-radius: 18px; overflow: hidden;
+            box-shadow: var(--card-shadow); cursor: pointer; border: 2px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); }
+
+        .card-image-container { width: 100%; height: 280px; overflow: hidden; }
+        .real-image-fill { width: 100%; height: 100%; object-fit: cover; }
+
+        .card-content { padding: 25px; }
+        .card h3 { font-size: 17px; color: var(--primary-color); min-height: 50px; margin: 0 0 15px 0; text-align: right; }
+
+        /* --- Video Section --- */
+        .video-section {
+            background: #1a5276; padding: 60px 30px; border-radius: 30px; color: white; margin-top: 40px;
+            box-shadow: inset 0 0 50px rgba(0,0,0,0.2);
+        }
+        .video-grid {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 30px;
+        }
+        .video-card {
+            background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 15px; text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .video-container {
+            position: relative; width: 100%; padding-bottom: 56.25%; height: 0;
+            overflow: hidden; border-radius: 12px; background: #000;
+        }
+        .video-container iframe {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;
+        }
+        .video-title { color: white; text-align: center; margin-top: 15px; font-size: 16px; font-weight: 500; }
+
+        /* --- Buttons --- */
+        .file-links { display: none; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 15px; }
+        .btn {
+            display: flex; align-items: center; justify-content: center; gap: 8px;
+            padding: 12px; border-radius: 8px; text-decoration: none; color: white; font-weight: bold;
+        }
+        .pdf { background: #c0392b; }
+        .excel { background: #27ae60; }
+
+        .footer { background: var(--primary-color); color: white; text-align: center; padding: 20px; margin-top: 50px; }
+
+        @media (max-width: 600px) {
+            .video-grid { grid-template-columns: 1fr; }
+            .main-header { padding: 15px; flex-direction: column; text-align: center; }
+            .logo-side { margin: 5px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="logo-side"><img src="images/imageg.png"></div>
+        <div class="header-text">
+            <h1>وزارة الأشغال العمومية والمنشآت القاعدية</h1>
+            <p>Ministère des Travaux Publics et des Infrastructures de Base</p>
+        </div>
+        <div class="logo-side"><img src="images/imaged.png"></div>
+    </header>
+
+    <main class="content-area">
+        <h3 class="section-title">بوابة الوثائق الرقمية</h3>
+        
+        <div class="cards-wrapper">
+            <div class="card" onclick="toggleFiles('files1', this)">
+                <div class="card-image-container"><img src="images/class_icon.png" class="real-image-fill"></div>
+                <div class="card-content">
+                    <h3>Numérotation des class autoroutière</h3>
+                    <div id="files1" class="file-links">
+                        <a href="files/file1.pdf" class="btn pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="files/file1.xlsx" class="btn excel"><i class="fas fa-file-excel"></i> Excel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleFiles('files2', this)">
+                <div class="card-image-container"><img src="images/network_icon.png" class="real-image-fill"></div>
+                <div class="card-content">
+                    <h3>CONFIGURATION DU RESEAU AUTOROUTIER MIS EN SERVICE</h3>
+                    <div id="files2" class="file-links">
+                        <a href="files/file2.pdf" class="btn pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="files/file2.xlsx" class="btn excel"><i class="fas fa-file-excel"></i> Excel</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card" onclick="toggleFiles('files3', this)">
+                <div class="card-image-container"><img src="images/comm_icon.png" class="real-image-fill"></div>
+                <div class="card-content">
+                    <h3>COMMUNICATION SUR L’EXPLOITATION ET L’ENTRETIEN</h3>
+                    <div id="files3" class="file-links">
+                        <a href="files/file3.pdf" class="btn pdf"><i class="fas fa-file-pdf"></i> PDF</a>
+                        <a href="files/file3.xlsx" class="btn excel"><i class="fas fa-file-excel"></i> Excel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-section">
+            <h3 style="text-align: center; color: var(--accent-color); margin-bottom: 30px;">
+                <i class="fas fa-play-circle"></i> عرض مرئي للأشغال والمشاريع
+            </h3>
+            <div class="video-grid">
+                
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/3TlIzidECjE" 
+                            title="Pénétrante autoroutière reliant le Port de Djen-Djen à l'autoroute Est-Ouest" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-title">منفذ الطريق السيار الرابط بين ميناء جن جن والطريق السيار شرق-غرب</p>
+                </div>
+
+                <div class="video-card">
+                    <div class="video-container">
+                        <iframe 
+                            src="https://www.youtube.com/embed/رابط_الفيديو_هنا" 
+                            title="YouTube video player" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+                            allowfullscreen>
+                        </iframe>
+                    </div>
+                    <p class="video-title">تطوير المنشآت القاعدية الكبرى</p>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        جميع الحقوق محفوظة &copy; 2026 - وزارة الأشغال العمومية والمنشآت القاعدية
+    </footer>
+
+    <script>
+        function toggleFiles(id, cardElement) {
+            const element = document.getElementById(id);
+            const allLinks = document.querySelectorAll('.file-links');
+            const allCards = document.querySelectorAll('.card');
+            const isVisible = window.getComputedStyle(element).display === "grid";
+
+            allLinks.forEach(el => el.style.display = 'none');
+            allCards.forEach(card => card.style.borderColor = 'transparent');
+
+            if (!isVisible) {
+                element.style.display = "grid";
+                cardElement.style.borderColor = "#1a5276";
+            }
+        }
+    </script>
+</body>
+</html>
